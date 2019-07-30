@@ -11,13 +11,13 @@ const podcastSchema = new Schema(
       type: String,
       required: true
     },
+    description: {
+      type: String,
+      required: false
+    },
     episodeNumber: {
       type: Number,
       required: true
-    },
-    airDate: {
-      type: String,
-      required: false
     },
     // Hay q cambiar el audio al formato correcto, revisar con multer
     audioFile: {

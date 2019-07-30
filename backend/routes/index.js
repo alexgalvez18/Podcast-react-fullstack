@@ -1,9 +1,19 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
+const {
+  signup,
+  login,
+  logout,
+  profile
+} = require("../controllers/authControllers");
+const passport = require("../config/passport");
+const { verifyToken } = require("../config/jwt");
 
-/* GET home page */
-router.get("/", (req, res, next) => {
-  res.render("index");
-});
+router.post("/signup", signup);
+
+router.post("/login", passport.authenticate("local"), login);
+
+router.get("/logout", logout);
+
+router.get("/profile", verifyToken, profile);
 
 module.exports = router;

@@ -8,7 +8,7 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
-const passport = require("./middlewares/passport");
+const passport = require("./config/passport");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const checkRole = require("./middlewares/checkRole");
@@ -74,7 +74,7 @@ app.locals.title = "Fundadores";
 
 const index = require("./routes/index");
 app.use("/", index);
-app.use("/auth", require("./routes/authRoutes"));
-app.use("/admin", checkRole("ADMIN"), require("./routes/adminRoutes"));
+// app.use("/auth", require("./routes/authRoutes"));
+// app.use("/admin", checkRole("ADMIN"), require("./routes/adminRoutes"));
 
 module.exports = app;
