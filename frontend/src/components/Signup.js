@@ -28,19 +28,6 @@ function Signup() {
       });
   };
 
-  // const isItWork = () => {
-  //   authService
-  //     .profile()
-  //     .then(response => {
-  //       console.log(response);
-  //     })
-  //     .catch(err => {
-  //       if (err.response.status === 401) {
-  //         console.log(err.response.data.message);
-  //       }
-  //     });
-  // };
-
   const handleLogout = () => {
     authService
       .logout()
@@ -83,9 +70,6 @@ function Signup() {
       <div>
         <button onClick={handleLogout}>Logout</button>
       </div>
-      {/* <div>
-        <button onClick={isItWork}>Is it works?</button>
-      </div> */}
     </main>
   );
 }
