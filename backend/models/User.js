@@ -1,14 +1,13 @@
 const { model, Schema } = require("mongoose");
-const plm = require("passport-local-mongoose");
+const PLM = require("passport-local-mongoose");
 
-const UserSchema = new Schema(
+const userSchema = new Schema(
   {
-    username: String,
-    password: String,
+    email: String,
     role: {
       type: String,
-      enum: ["GUEST", "ADMIN"],
-      default: "GUEST"
+      enum: ["USER", "ADMIN"],
+      default: "USER"
     }
   },
   {
@@ -17,6 +16,6 @@ const UserSchema = new Schema(
   }
 );
 
-UserSchema.plugin(plm, { usenameField: "username" });
+userSchema.plugin(PLM, { usernameField: "email" });
 
-module.exports = model("User", UserSchema);
+module.exports = model("User", userSchema);

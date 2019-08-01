@@ -1,8 +1,15 @@
 import React from "react";
 import useForm from "../hooks/useForm";
 import AuthService from "../services/auth";
+import { Button } from "antd";
+import { Layout } from "antd";
+import { withRouter } from "react-router-dom";
 
-function Signup() {
+function goBack() {
+  window.history.back();
+}
+
+const Signup = props => {
   const authService = new AuthService();
   const [form, handleInputs] = useForm();
 
@@ -22,9 +29,11 @@ function Signup() {
       .login(form)
       .then(response => {
         console.log(response);
+        props.history.push("/login");
+        // <Redirect to="/login" />
       })
       .catch(err => {
-        console.log(err);
+        console.log(err.response);
       });
   };
 
@@ -40,38 +49,60 @@ function Signup() {
   };
 
   return (
-    <main>
-      <div className="signup">
-        <h2>Signup</h2>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          onChange={e => handleInputs(e)}
-        />
-        <input type="email" name="email" onChange={e => handleInputs(e)} />
-        <input
-          type="password"
-          name="password"
-          onChange={e => handleInputs(e)}
-        />
-        <button onClick={handleSignup}>Signup</button>
-      </div>
-      <div className="login">
-        <h2>Login</h2>
-        <input type="email" name="email" onChange={e => handleInputs(e)} />
-        <input
-          type="password"
-          name="password"
-          onChange={e => handleInputs(e)}
-        />
-        <button onClick={handleLogin}>Login</button>
-      </div>
-      <div>
-        <button onClick={handleLogout}>Logout</button>
-      </div>
-    </main>
-  );
-}
+    <Layout.Content className="signup">
+      <main>
+        <div className="signup2">
+          <h2>Signup</h2>
 
-export default Signup;
+          <input
+            type="email"
+            name="email"
+            placeholder="mail"
+            onChange={e => handleInputs(e)}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={e => handleInputs(e)}
+          />
+          <Button type="primary" onClick={handleSignup}>
+            Signup
+          </Button>
+        </div>
+        <div>
+          <h2>Login</h2>
+          <input
+            type="email"
+            name="email"
+            placeholder="email"
+            onChange={e => handleInputs(e)}
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="password"
+            onChange={e => handleInputs(e)}
+          />
+          <Button type="primary" onClick={handleLogin}>
+            Login
+          </Button>
+        </div>
+        <div className="downbuttons">
+          <div>
+            <Button type="danger" onClick={handleLogout}>
+              Logout
+            </Button>
+          </div>
+          <div>
+            <Button type="danger" onClick={goBack}>
+              Back
+            </Button>
+          </div>
+        </div>
+      </main>
+    </Layout.Content>
+  );
+};
+
+export default withRouter(Signup);

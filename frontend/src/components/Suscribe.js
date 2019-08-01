@@ -1,20 +1,31 @@
 import React, { Component } from "react";
-import { Button } from "antd";
+import { Button, Form } from "antd";
 
 class Suscribe extends Component {
-  suscribeToNewsletter() {
-    console.log("agrega el mail a la lista de correos");
-  }
+  handleSubmit = e => {
+    e.preventDefault();
+    console.log("funciona");
+    // this.props.form.validateFields((err, values) => {
+    //   if (!err) {
+    //     const { keys, names } = values;
+    //     console.log("Received values of form: ", values);
+    //     console.log("Merged values:", keys.map(key => names[key]));
+    //   }
+    // });
+  };
 
   render() {
     return (
       <div className="suscribe">
         <h3>Enterate de todas las noticias y nuevos episodios</h3>
-        <form action="submit" onSubmit={this.suscribeToNewsletter}>
+        <Form onSubmit={this.handleSubmit} className="form">
           <input type="text" name="email" placeholder="email" />
-
-          <input type="submit" defaultValue="Suscribete" />
-        </form>
+          <Form.Item>
+            <Button type="primary" htmlType="submit">
+              Suscribete
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     );
   }

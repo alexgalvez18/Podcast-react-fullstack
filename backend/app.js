@@ -9,12 +9,10 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 const passport = require("./config/passport");
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
-const checkRole = require("./middlewares/checkRole");
+const cors = require("cors");
 
 mongoose
-  .connect("mongodb://localhost/backend", { useNewUrlParser: true })
+  .connect(process.env.DB, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -31,30 +29,21 @@ const debug = require("debug")(
 
 const app = express();
 
+app.use(
+  cors({
+    credentials: true,
+    origin: [process.env.FRONT]
+  })
+);
+
+app.use(passport.initialize());
+// app.use(passport.session());
+
 // Middleware Setup
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-
-// app.use(
-//   session({
-//     secret: process.env.SESSION,
-//     saveUninitialized: true,
-//     resave: true,
-//     cookie: {
-//       maxAge: 1000 * 60 * 60
-//     },
-//     store: new MongoStore({
-//       mongooseConnection: mongoose.connection,
-//       ttl: 24 * 60 * 60
-//     })
-//   })
-// );
-
-app.use(passport.initialize());
-app.use(passport.session());
-// Express View engine setup
 
 app.use(
   require("node-sass-middleware")({
@@ -74,7 +63,5 @@ app.locals.title = "Fundadores";
 
 const index = require("./routes/index");
 app.use("/", index);
-// app.use("/auth", require("./routes/authRoutes"));
-// app.use("/admin", checkRole("ADMIN"), require("./routes/adminRoutes"));
 
 module.exports = app;

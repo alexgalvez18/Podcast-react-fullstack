@@ -4,25 +4,33 @@ import LastEpisode from "./LastEpisode";
 import EpisodeList from "./EpisodeList";
 import Suscribe from "./Suscribe";
 import NominaInvitado from "./NominaInvitado";
-import Contacto from "./Contacto";
-import { Layout } from "antd";
+import { Layout, Button } from "antd";
 
 class App extends Component {
   render() {
     return (
       <Layout>
         <div>
-          <Layout.Header>
+          <Layout.Header className="navbar">
             <Navbar />
           </Layout.Header>
-          {/* <Layout.Content className="content" /> */}
-          <LastEpisode />
-          <EpisodeList tagline="Ultimo epi" />
-          <Suscribe />
-          <NominaInvitado />
 
-          <Layout.Footer>
-            <Contacto />
+          <div className="textoMedio">
+            <b>Última entrevista</b>
+          </div>
+
+          <LastEpisode />
+          <div className="textoMedio">
+            <b>Entrevistas anteriores</b>
+          </div>
+          <EpisodeList tagline="Ultimo epi" />
+          <NominaInvitado />
+          <Suscribe />
+
+          <Layout.Footer className="contacto2">
+            <div className="contacto">
+              <Button type="primary"> Contactanos </Button>
+            </div>
           </Layout.Footer>
         </div>
       </Layout>

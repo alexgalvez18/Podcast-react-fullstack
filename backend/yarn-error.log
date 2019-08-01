@@ -1,0 +1,56 @@
+Arguments: 
+  /Users/alejandrogalvezrico/.nvm/versions/node/v10.16.0/bin/node /Users/alejandrogalvezrico/.nvm/versions/node/v10.16.0/bin/yarn add cors
+
+PATH: 
+  /Users/alejandrogalvezrico/.nvm/versions/node/v10.16.0/bin:/Users/alejandrogalvezrico/bin:/usr/local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/Visual Studio Code.app/Contents/Resources/app/bin
+
+Yarn version: 
+  1.17.3
+
+Node version: 
+  10.16.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EACCES: permission denied, unlink '/Users/alejandrogalvezrico/Documents/Ironhack/Week8/final-proyect/backend/node_modules/multer/CHANGELOG.md'
+
+npm manifest: 
+  {
+    "name": "backend",
+    "version": "0.0.0",
+    "private": true,
+    "scripts": {
+      "start": "node ./bin/www",
+      "dev": "DEBUG=backend:* nodemon ./bin/www",
+      "dev-windows": "nodemon ./bin/www"
+    },
+    "dependencies": {
+      "bcrypt": "^3.0.6",
+      "body-parser": "^1.18.3",
+      "connect-mongo": "^3.0.0",
+      "cookie-parser": "^1.4.3",
+      "dotenv": "^6.0.0",
+      "express": "^4.16.3",
+      "express-session": "^1.16.2",
+      "hbs": "^4.0.1",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^5.2.10",
+      "morgan": "^1.9.0",
+      "multer": "^1.4.2",
+      "node-sass-middleware": "^0.11.0",
+      "passport": "^0.4.0",
+      "passport-local-mongoose": "^5.0.1",
+      "serve-favicon": "^2.5.0"
+    },
+    "devDependencies": {
+      "nodemon": "^1.12.1"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
