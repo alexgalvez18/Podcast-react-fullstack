@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button } from "antd";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
@@ -13,7 +14,7 @@ class Navbar extends Component {
             <ul className="nav-links">
               <li className="nav-item">
                 <Button type="primary">
-                  <a href="hhttps://fundadores.herokuapp.com/">Home</a>
+                  <Link to="/">Home</Link>
                 </Button>
               </li>
               <li className="nav-item">
@@ -24,7 +25,7 @@ class Navbar extends Component {
               </li>
               <li className="nav-item">
                 <Button type="primary">
-                  <a href="https://fundadores.herokuapp.com/signup">Signup</a>
+                  <Link to="/signup">Signup</Link>
                 </Button>
               </li>
             </ul>

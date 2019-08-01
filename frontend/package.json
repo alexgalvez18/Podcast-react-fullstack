@@ -10,7 +10,8 @@
     "react-bootstrap": "^1.0.0-beta.10",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "^3.0.1"
+    "react-scripts": "^3.0.1",
+    "react-snap": "^1.23.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -18,10 +19,6 @@
     "eject": "react-scripts eject",
     "build": "react-scripts build && cp -r build/ ../backend/public",
     "postbuild": "react-snap"
-  },
-  "react-snap": {
-    "inlinecss": true,
-    "skipThirdPartyRequests": true
   },
   "eslintConfig": {
     "extends": "react-app"

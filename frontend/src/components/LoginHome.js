@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import { Button } from "antd";
 
@@ -10,7 +11,7 @@ class LoginHome extends Component {
         <div className="login">
           <h3> You are in!</h3>
           <Button type="primary">
-            <a href="https://fundadores.herokuapp.com/">Go HOME!</a>
+            <Link to="/">GO HOME!</Link>
           </Button>
         </div>
       </main>
